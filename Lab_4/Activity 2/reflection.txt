@@ -1,0 +1,7 @@
+1. **How does RabbitMQ balance load across multiple consumers?**
+
+RabbitMQ distributes incoming messages across active consumers connected to a queue using a round-robin approach. This way, each message is routed to the next available consumer, preventing any single consumer from being overloaded while others are underutilized. Additionally, by setting Quality of Service (QoS) limits, RabbitMQ can control the number of messages each consumer receives at once, which helps manage processing loads effectively and improves resource utilization across the system.
+
+2. **What happens if a consumer disconnects?**
+
+If a consumer disconnects unexpectedly or fails to acknowledge a message, RabbitMQ recognizes the lost connection and returns any unacknowledged messages back to the queue. These messages are then redistributed to other active consumers, ensuring no messages are lost and all tasks are eventually processed. This automatic redelivery system improves reliability and fault tolerance, ensuring that messages are consistently handled without requiring manual intervention.

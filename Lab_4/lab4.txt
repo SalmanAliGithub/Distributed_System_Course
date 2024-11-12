@@ -1,0 +1,19 @@
+### **Reflection Report**
+
+1. **Buffer Size Influence on Message Passing:**
+   - **Frequency and Timing:** A larger buffer can hold more messages, allowing messages to be sent and received at higher rates and maintaining a consistent flow without delays. In contrast, a smaller buffer may slow down message processing, as messages may need to wait until there’s space in the buffer.
+
+2. **Response When Buffer Reaches Capacity:**
+   - **Handling Overflow:** When the buffer is full, additional incoming messages might be discarded, denied, or cause the publisher to pause until there’s room available. The exact response depends on the system’s setup and handling logic.
+
+3. **Load Balancing in RabbitMQ with Multiple Consumers:**
+   - **Round-Robin Delivery:** RabbitMQ distributes messages across consumers in a round-robin pattern. Each consumer gets a roughly equal share of messages, preventing any one consumer from being overwhelmed and ensuring a balanced workload.
+
+4. **Impact of Consumer Disconnection:**
+   - **Requeueing Messages:** If a consumer disconnects, RabbitMQ will recognize this and requeue any messages that the consumer hadn’t acknowledged. These messages are then reassigned to other active consumers, ensuring continuity of processing and no loss of data.
+
+5. **NATS and Subject-Based Message Routing:**
+   - **Topic-Specific Routing:** NATS organizes messages by subjects, allowing subscribers to listen to specific topics or use wildcards for related messages. This allows precise message targeting based on topic structures.
+
+6. **Benefits of Organized Subjects in Messaging:**
+   - **Improved Filtering and Scalability:** By organizing messages with different subjects, the system supports effective filtering, so subscribers only receive relevant information. This approach also enhances scalability, simplifies maintenance, and provides clearer separation of different areas within the messaging framework.
